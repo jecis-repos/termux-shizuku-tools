@@ -1,15 +1,14 @@
-# Termux Shizuku Tools 🚀
+# Termux Android Toolkit 🚀
 
-A comprehensive collection of tools and scripts for Termux with Shizuku/rish integration on Android 16+.
+A complete Termux environment for Android 16+: AI CLI integration (Claude + Gemini), Shizuku/rish elevated privileges, and Lucky Patcher extensions — all wired together with system tools and wireless ADB.
 
-## 📋 Features
+Three pillars, one toolkit:
 
-- **Shizuku Integration** - Full rish support for elevated privileges without root
-- **Wireless ADB** - Easy wireless debugging setup
-- **Lucky Patcher Extensions** - Advanced app patching capabilities
-- **AI CLI Tools** - Claude and Gemini integration
-- **System Tools** - Enhanced package management and system control
-- **Android 16 Support** - Fixes and workarounds for latest Android
+- **AI CLI** — Claude and Gemini CLIs with a unified `ai` wrapper, interactive chat, and AI-powered system analysis
+- **Shizuku/rish** — Full elevated-privilege shell without root: package management, system control, keepalive, Android 16 fixes
+- **Lucky Patcher** — Advanced app patching, component analysis, and modifications via rish
+
+Plus complete Termux setup, privilege grants, Tasker integration, and wireless/hotspot ADB.
 
 ## 🛠️ Installation
 
@@ -25,7 +24,14 @@ chmod +x setup.sh
 
 ## 📦 Included Tools
 
-### 1. Shizuku/rish Setup
+### 1. AI CLI Tools
+- `ai-tools/ai` - Universal AI CLI wrapper (chat, scan, setup)
+- `ai-tools/claude_cli.py` - Claude AI integration
+- `ai-tools/gemini_cli.py` - Gemini AI integration
+- `ai-tools/ai_cli_simple.sh` - One-shot installer for the AI CLIs
+- `ai-tools/ai_analyze.sh` - AI-powered system analyzer (uses rish)
+
+### 2. Shizuku/rish — Elevated Privileges
 - `shizuku/rish` - Pre-configured rish launcher (requires `rish_shizuku.dex`, see Configuration)
 - `shizuku/shizuku_control.sh` - Shizuku control center (start/stop/status)
 - `shizuku/shizuku_env.sh` - Environment setup (`spm`, `sam`, `sdumpsys`, ...)
@@ -37,18 +43,11 @@ chmod +x setup.sh
 - `shizuku/shizuku_monitor.sh` - Monitor Shizuku status
 - `shizuku/shizuku_notify.sh` - Notifications about Shizuku status
 
-### 2. Lucky Patcher Extensions
+### 3. Lucky Patcher Extensions
 - `lucky-patcher/lp_ultimate.sh` - Ultimate patching functions
 - `lucky-patcher/lp_advanced.sh` - Advanced app modifications
 - `lucky-patcher/lp_analyze.sh` - App component analyzer
 - `lucky-patcher/lucky_patcher_rish.sh` - Lucky Patcher helpers via rish
-
-### 3. AI CLI Tools
-- `ai-tools/ai` - Universal AI CLI wrapper
-- `ai-tools/claude_cli.py` - Claude AI integration
-- `ai-tools/gemini_cli.py` - Gemini AI integration
-- `ai-tools/ai_cli_simple.sh` - One-shot installer for the AI CLIs
-- `ai-tools/ai_analyze.sh` - AI-powered system analyzer (uses rish)
 
 ### 4. System Tools
 - `system/grant_termux_privileges.sh` - Enhanced permissions
@@ -58,6 +57,22 @@ chmod +x setup.sh
 - `system/termux_complete_setup.sh` - Complete Termux setup
 
 ## 🚀 Quick Start
+
+### AI Tools
+```bash
+# Setup API keys
+./ai-tools/ai setup
+
+# Use AI assistants
+ai claude "Write a Python script"
+ai gemini "Explain quantum computing"
+
+# Interactive chat mode
+ai chat
+
+# AI-powered system analysis (uses rish)
+./ai-tools/ai_analyze.sh
+```
 
 ### Enable Shizuku
 ```bash
@@ -83,16 +98,6 @@ sdumpsys battery
 
 # Patch an app
 ./lucky-patcher/lp_ultimate.sh super-patch com.example.app
-```
-
-### AI Tools
-```bash
-# Setup API keys
-./ai-tools/ai setup
-
-# Use AI assistants
-ai claude "Write a Python script"
-ai gemini "Explain quantum computing"
 ```
 
 ## 📱 Requirements
@@ -144,6 +149,8 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 - Shizuku by RikkaApps
 - Termux development team
+- Anthropic (Claude API)
+- Google (Gemini API)
 - All contributors
 
 ---

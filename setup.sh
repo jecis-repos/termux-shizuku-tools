@@ -34,6 +34,10 @@ fi
 
 if [ -f "shizuku/rish_shizuku.dex" ]; then
     cp shizuku/rish_shizuku.dex ~/rish_shizuku.dex
+else
+    echo "NOTE: shizuku/rish_shizuku.dex is missing (it is gitignored and not committed)."
+    echo "      rish will not work without it. Get it from the Shizuku project"
+    echo "      (github.com/RikkaApps/Shizuku) and place it in shizuku/ and ~/."
 fi
 
 # Set up environment
@@ -87,7 +91,7 @@ fi
 # Install Python packages
 echo ""
 echo "[6/7] Installing Python packages..."
-pip install --no-deps anthropic google-generativeai requests 2>/dev/null || true
+pip install --no-deps anthropic google-genai requests 2>/dev/null || true
 
 # Create documentation
 echo ""

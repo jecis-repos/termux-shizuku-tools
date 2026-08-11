@@ -21,7 +21,7 @@ def main():
     
     try:
         message = client.messages.create(
-            model="claude-3-haiku-20240307",
+            model=os.environ.get('CLAUDE_MODEL', 'claude-haiku-4-5'),
             max_tokens=1000,
             messages=[{"role": "user", "content": prompt}]
         )

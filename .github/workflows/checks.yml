@@ -1,0 +1,23 @@
+name: Source checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check shell syntax
+        run: |
+          while IFS= read -r -d '' file; do bash -n "$file"; done < <(find . -name '*.sh' -print0)
+          bash -n ai-tools/ai
+          bash -n shizuku/rish
+      - name: Check Python syntax
+        run: python -m compileall -q ai-tools
+      - name: Installer rejects a non-Termux host
+        run: |
+          if bash setup.sh > /tmp/setup.log 2>&1; then exit 1; fi
+          grep -q 'inside Termux' /tmp/setup.log

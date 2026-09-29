@@ -1,4 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+# Resolve resources relative to the script, including when launched elsewhere.
+TOOLKIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$TOOLKIT_DIR"
+if ! command -v pkg >/dev/null 2>&1; then
+    echo "Run this installer inside Termux on Android." >&2
+    exit 1
+fi
+touch ~/.bashrc
 
 echo "=== Termux Shizuku Tools Setup ==="
 echo ""
@@ -91,7 +101,7 @@ fi
 # Install Python packages
 echo ""
 echo "[6/7] Installing Python packages..."
-pip install --no-deps anthropic google-genai requests 2>/dev/null || true
+python -m pip install anthropic google-genai requests
 
 # Create documentation
 echo ""
